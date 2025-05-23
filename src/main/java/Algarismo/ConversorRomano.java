@@ -1,3 +1,4 @@
+package Algarismo;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
