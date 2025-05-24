@@ -29,4 +29,4 @@ Relatórios são gerados automaticamente em:
 
 ## 🛠️ CI com GitHub Actions
 
-Veja o workflow em `.github/workflows/test.yml`
+Veja o workflow em `.github/workflows/test.yml`.
