@@ -11,6 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Mostrar arte ASCII no log
+        run: |
+          echo "                                                                                                   #     #"
+          echo "      #                      "
+          echo "      #   ##   #    #   ##   "
+          echo "      #  #  #  #    #  #  #  "
+          echo "#     # ###### #    # ###### "
+          echo "#     # #    #  #  #  #    # "
+          echo " #####  #    #   ##   #    # "
+
       - name: Checkout código do repositório
         uses: actions/checkout@v3
 
@@ -37,4 +47,3 @@ jobs:
 
       - name: Rodar testes com Maven
         run: mvn clean test
-        
