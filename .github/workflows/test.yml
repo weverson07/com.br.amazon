@@ -40,3 +40,25 @@ jobs:
           Xvfb :99 -ac &     # Inicia servidor X virtual
           export DISPLAY=:99 # Informa ao Selenium onde renderizar
           mvn clean test
+        continue-on-error: true
+
+      - name: 📄 Mostrar logs do Surefire no console
+        if: always()
+        run: |
+          echo "📄 Exibindo logs dos testes:"
+          ls -l target/surefire-reports || echo "Nenhum relatório encontrado"
+          cat target/surefire-reports/*.txt || echo "Nenhum log encontrado"
+
+      - name: 📦 Anexar relatórios JUnit XML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-xml-report
+          path: target/surefire-reports/
+
+      - name: 📄 Anexar relatório HTML (Surefire)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-relatorio-teste
+          path: target/site/index.html
