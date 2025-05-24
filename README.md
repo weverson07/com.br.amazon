@@ -37,6 +37,6 @@ src/
     └── AutocompletePage.java
 
 📈 Resultado Esperado
-O teste deve abrir o site da Amazon, digitar "livro" e validar que sugestões de pesquisa são exibidas corretamente..
+O teste deve abrir o site da Amazon, digitar "livro" e validar que sugestões de pesquisa são exibidas corretamente...
 
 
