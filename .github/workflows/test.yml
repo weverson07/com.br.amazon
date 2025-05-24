@@ -2,9 +2,9 @@ name: Java Selenium CI Pipeline
 
 on:
   push:
-    branches: [ master ]
+    branches: [ NewProjetoJava ]
   pull_request:
-    branches: [ master ]
+    branches: [ NewProjetoJava ]
 
 jobs:
   test:
