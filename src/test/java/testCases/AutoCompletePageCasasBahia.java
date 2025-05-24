@@ -21,6 +21,18 @@ public class AutoCompletePageCasasBahia {
 
     @BeforeEach
     public void setup() {
+        System.out.println(
+    "                                                                                                   #     #\n" +
+    "      #                      \n" +
+    " #                            #\r\n" + //
+                "      #   ##   #    #   ##        # #   #    # #####  ####  #    #   ##   ##### #  ####  #    #\r\n" + //
+                "      #  #  #  #    #  #  #      #   #  #    #   #   #    # ##  ##  #  #    #   # #    # ##   #\r\n" + //
+                "      # #    # #    # #    #    #     # #    #   #   #    # # ## # #    #   #   # #    # # #  #\r\n" + //
+                "#     # ###### #    # ######    ####### #    #   #   #    # #    # ######   #   # #    # #  # #\r\n" + //
+                "#     # #    #  #  #  #    #    #     # #    #   #   #    # #    # #    #   #   # #    # #   ##\r\n" + //
+                " #####  #    #   ##   #    #    #     #  ####    #    ####  #    # #    #   #   #  ####  #    # \n"
+
+);
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
