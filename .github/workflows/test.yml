@@ -49,3 +49,9 @@ jobs:
           ls -l target/surefire-reports || echo "Nenhum relatório encontrado"
           cat target/surefire-reports/*.txt || echo "Nenhum log encontrado"
 
+      - name: Upload dos relatórios Surefire
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: surefire-reports
+          path: target/surefire-reports/
