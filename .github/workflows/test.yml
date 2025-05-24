@@ -25,7 +25,7 @@ jobs:
       - name: ⚙️ Instalar Google Chrome & ChromeDriver
         run: |
           sudo apt update
-          sudo apt install -y wget unzip xvfb google-chrome-stable
+          sudo apt install -y wget unzip xvfb libxi6 libgconf-2-4 libnss3 google-chrome-stable
           CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
           wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
@@ -38,9 +38,11 @@ jobs:
           google-chrome --version
           chromedriver --version
 
-      - name: 🧪 Rodar testes com Maven
+      - name: 🧪 Rodar testes com Maven (com xvfb)
         run: |
           echo "Iniciando testes com Maven"
+          Xvfb :99 -ac &
+          export DISPLAY=:99
           mvn clean test site
         env:
           DISPLAY: :99
@@ -57,4 +59,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: html-relatorio-teste
-          path: target/site/
+          path: target/site/index.html
