@@ -60,3 +60,8 @@ jobs:
         with:
           name: html-relatorio-teste
           path: target/site/index.html
+      - name: 📄 Mostrar log do Surefire no console
+        if: always()
+        run: |
+          cat target/surefire-reports/*.txt || echo "Nenhum log encontrado"
+
