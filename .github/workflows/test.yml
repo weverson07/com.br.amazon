@@ -11,54 +11,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🧾 Checkout código do repositório
+      - name: Checkout código do repositório
         uses: actions/checkout@v3
 
-      - name: ☕ Instalar Java 17
+      - name: Instalar Java 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: ⚙️ Instalar o Google Chrome e ChromeDriver
+      - name: Instalar o Google Chrome e ChromeDriver
         run: |
           sudo apt update
-          sudo apt install -y wget unzip xvfb libxi6 libgconf-2-4 libnss3 google-chrome-stable
+          sudo apt install -y google-chrome-stable
           CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
           wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
           sudo mv chromedriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
 
-      - name: ✅ Verificar instalação do Chrome e do Driver
+      - name: Verificar instalação do Chrome e do Driver
         run: |
           google-chrome --version
           chromedriver --version
 
-      - name: 🧪 Rodar testes com Maven + Xvfb (modo gráfico virtual)
-        run: |
-          Xvfb :99 -ac &     # Inicia servidor X virtual
-          export DISPLAY=:99 # Informa ao Selenium onde renderizar
-          mvn clean test
-        continue-on-error: true
-
-      - name: 📄 Mostrar logs do Surefire no console
-        if: always()
-        run: |
-          echo "📄 Exibindo logs dos testes:"
-          ls -l target/surefire-reports || echo "Nenhum relatório encontrado"
-          cat target/surefire-reports/*.txt || echo "Nenhum log encontrado"
-
-      - name: 📦 Anexar relatórios JUnit XML
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: junit-xml-report
-          path: target/surefire-reports/
-
-      - name: 📄 Anexar relatório HTML (Surefire)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: html-relatorio-teste
-          path: target/site/index.html
+      - name: Rodar testes com Maven
+        run: mvn clean test
+        
