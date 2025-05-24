@@ -37,7 +37,7 @@ public class autocompletePage {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".s-suggestion")));
 
 		List<WebElement> suggestions = driver.findElements(By.cssSelector(".s-suggestion"));
-		assertTrue(suggestions.size() > 0, "Deveria haver sugestões de autocomplete");
+		assertTrue(suggestions.size() > 0, "Deveria haver sugestões de autocomplete!");
 	}
 
 	@AfterEach
